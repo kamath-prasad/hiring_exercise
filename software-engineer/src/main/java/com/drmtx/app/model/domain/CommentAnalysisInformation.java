@@ -20,8 +20,8 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 public class CommentAnalysisInformation {
 
-    @GeneratedValue(generator = "uuid", strategy = GenerationType.AUTO)
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(generator="system-uuid",strategy = GenerationType.AUTO)
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name = "id", unique = true, nullable = false)
     @Id
     private String id;
