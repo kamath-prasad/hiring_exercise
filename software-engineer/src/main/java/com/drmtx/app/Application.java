@@ -15,30 +15,30 @@ import javax.servlet.ServletContextListener;
 
 @EnableAutoConfiguration
 @SpringBootApplication
-@EntityScan(basePackageClasses=Application.class)
+@EntityScan(basePackageClasses = Application.class)
 @Configuration
 public class Application {
 
-  private static final Logger _logger = LogManager.getLogger(Application.class);
+    private static final Logger _logger = LogManager.getLogger(Application.class);
 
-  @Bean
-  protected ServletContextListener listener() {
-    return new ServletContextListener() {
+    @Bean
+    protected ServletContextListener listener() {
+        return new ServletContextListener() {
 
-      @Override
-      public void contextInitialized(ServletContextEvent sce) {
-        _logger.info("ServletContext initialized");
-      }
+            @Override
+            public void contextInitialized(ServletContextEvent sce) {
+                _logger.info("ServletContext initialized");
+            }
 
-      @Override
-      public void contextDestroyed(ServletContextEvent sce) {
-        _logger.info("ServletContext destroyed");
-      }
+            @Override
+            public void contextDestroyed(ServletContextEvent sce) {
+                _logger.info("ServletContext destroyed");
+            }
 
-    };
-  }
+        };
+    }
 
-  public static void main(String[] args) throws Exception {
-    ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
-  }
+    public static void main(String[] args) throws Exception {
+        ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
+    }
 }
