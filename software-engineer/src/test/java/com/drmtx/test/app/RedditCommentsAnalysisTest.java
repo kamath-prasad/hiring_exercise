@@ -36,6 +36,7 @@ import com.drmtx.app.model.domain.WordCountInformation;
 import com.drmtx.app.model.repository.CommentAnalysisInfoRepository;
 import com.drmtx.app.model.repository.WordCountInfoRepository;
 import com.drmtx.app.service.RedditCommentsAnalysisService;
+import com.drmtx.app.util.CommonUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -167,4 +168,22 @@ public class RedditCommentsAnalysisTest {
         }
     }
 
+    @Test
+    public void testGetAllValuesForAttribute() {
+        try {
+            Assert.assertEquals("hello world",
+                    CommonUtils.getAllValuesForAttribute("{body : 'hello' , anotherObj : { body : 'world'} }", "body"));
+        } catch (Exception e) {
+            Assert.assertThat(e, CoreMatchers.instanceOf(NestedServletException.class));
+        }
+    }
+
+    @Test
+    public void testGetWordFrequency() {
+        try {
+            Assert.assertTrue(CommonUtils.getWordFrequency("the quick \n brown fox \t jumps over the lazy dog").size() == 8);
+        } catch (Exception e) {
+            Assert.assertThat(e, CoreMatchers.instanceOf(NestedServletException.class));
+        }
+    }
 }
